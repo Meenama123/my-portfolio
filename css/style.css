@@ -1,0 +1,1680 @@
+/* ============================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   These are your chosen colors - change them
+   here and they update everywhere
+   ============================================ */
+
+:root {
+    /* Colors */
+    --bg-primary: #0f0e11;      /* Page background */
+    --bg-card: #1e1b22;         /* Card surfaces */
+    --text-primary: #e8d8e0;    /* Body text */
+    --accent: #c47fa0;          /* Links, buttons, highlights */
+    --accent-muted: rgba(196, 127, 160, 0.15);  /* Subtle accent for borders */
+    --text-muted: rgba(232, 216, 224, 0.6);     /* Dimmed text for less important content */
+
+    /* Typography */
+    --font-main: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Spacing */
+    --section-padding: 80px 24px;
+    --container-width: 1100px;
+}
+
+/* ============================================
+   CSS RESET
+   Removes browser default styles so we
+   start from a clean slate
+   ============================================ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================
+   BASE STYLES
+   Applied to the whole page
+   ============================================ */
+
+html {
+    scroll-behavior: smooth;  /* Makes anchor links scroll smoothly */
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    line-height: 1.7;  /* Comfortable reading space between lines */
+    font-size: 16px;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   Headings and text styles
+   ============================================ */
+
+h1, h2, h3, h4 {
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 3rem;       /* Big hero heading */
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2rem;       /* Section titles */
+    font-weight: 600;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* Underline decoration under section titles */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent);
+    margin-top: 12px;
+}
+
+h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+p {
+    margin-bottom: 16px;
+    color: var(--text-muted);
+}
+
+/* Accent color for highlighted text */
+.highlight {
+    color: var(--accent);
+}
+
+/* Section subtitle text */
+.section-subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--text-primary);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--bg-primary);
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    transform: translateY(-2px);  /* Slight lift on hover */
+}
+
+/* Small button variant (for project cards) */
+.btn-small {
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--bg-primary);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-small:hover {
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.btn-outline:hover {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+/* ============================================
+   NAVIGATION BAR
+   Fixed, transparent at top, solid on scroll
+   Mobile hamburger menu included
+   ============================================ */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 40px;
+    transition: all 0.3s ease;
+    /* Starts transparent, changes on scroll */
+    background-color: transparent;
+}
+
+/* This class is added by JavaScript when user scrolls down */
+header.scrolled {
+    background-color: rgba(15, 14, 17, 0.9);  /* Dark with slight transparency */
+    backdrop-filter: blur(10px);               /* Blurs content behind navbar */
+    padding: 14px 40px;                        /* Slightly smaller padding */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+nav {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary) !important;
+    z-index: 1001; /* Keep logo above mobile menu */
+}
+
+/* Navigation links list */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent) !important;
+}
+
+/* ===== HAMBURGER BUTTON ===== */
+/* Three lines icon for mobile */
+.hamburger {
+    display: none;          /* Hidden on desktop */
+    flex-direction: column; /* Stack the 3 lines vertically */
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;          /* Above the mobile menu */
+    padding: 5px;
+}
+
+/* Each line of the hamburger */
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;  /* Smooth animation to X */
+}
+
+/* ===== HAMBURGER ANIMATION ===== */
+/* When active class is added, transform 3 lines into X */
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    /* Top line rotates and moves down */
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    /* Middle line disappears */
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    /* Bottom line rotates and moves up */
+}
+
+/* ===== MOBILE NAVIGATION ===== */
+/* How the menu looks on small screens */
+
+@media (max-width: 768px) {
+
+    /* Show the hamburger button */
+    .hamburger {
+        display: flex;
+    }
+
+    /* The navigation links become a full-screen overlay */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;               /* Hidden off-screen to the right */
+        width: 70%;                  /* Takes 70% of screen width */
+        max-width: 300px;
+        height: 100vh;               /* Full screen height */
+        background-color: var(--bg-card);
+        flex-direction: column;      /* Stack links vertically */
+        justify-content: center;     /* Center them vertically */
+        align-items: center;
+        gap: 40px;
+        transition: right 0.4s ease; /* Smooth slide-in animation */
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* When active, slide the menu into view */
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;  /* Bigger links on mobile for easy tapping */
+    }
+
+    /* Dark overlay behind the menu */
+    .nav-links.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+}
+
+/* ============================================
+   LAYOUT CONTAINERS
+   Centers content and limits width
+   ============================================ */
+
+section {
+    padding: var(--section-padding);
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+/* ============================================
+   HERO SECTION
+   Full-screen with animated background
+   ============================================ */
+
+#home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 0;
+    position: relative;       /* So shapes position relative to this */
+    overflow: hidden;         /* Hide shapes that float outside */
+}
+
+/* ============================================
+   HERO CONTENT
+   ============================================ */
+
+.hero-content {
+    position: relative;
+    z-index: 2;               /* Above the animated shapes */
+    max-width: 700px;
+}
+
+.hero-greeting {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: 2px;     /* Spaced out for elegance */
+    text-transform: uppercase;
+}
+
+.hero-name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.hero-title {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    font-weight: 400;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 36px;
+    color: var(--text-muted);
+}
+
+/* Two buttons side by side with gap */
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;         /* Stacks on very small screens */
+}
+
+/* ============================================
+   ABOUT SECTION
+   Two-column layout: text + photo placeholder
+   ============================================ */
+
+#about {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;    /* Two equal columns */
+    gap: 80px;
+    align-items: center;
+}
+
+/* ===== ABOUT TEXT (Left Column) ===== */
+
+.about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* First paragraph slightly larger for emphasis */
+.about-text p:first-child {
+    font-size: 1.15rem;
+    color: var(--text-primary);
+}
+
+/* ===== ABOUT IMAGE (Right Column) ===== */
+
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The circular photo placeholder */
+.image-placeholder {
+    width: 280px;
+    height: 280px;
+    background-color: var(--bg-card);
+    border: 3px solid var(--accent);
+    border-radius: 50%;              /* Makes it a circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    margin: 0 auto;
+    font-size: 0.9rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Decorative ring behind the photo */
+.image-placeholder::before {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 2px dashed var(--accent-muted);
+    /* The dashed ring sits behind the photo */
+    z-index: -1;
+    animation: rotateRing 30s linear infinite;
+}
+
+/* Hover effect: subtle glow */
+.image-placeholder:hover {
+    box-shadow: 0 0 40px rgba(196, 127, 160, 0.2);
+    border-color: var(--text-primary);
+}
+
+/* Slow rotation for the decorative ring */
+@keyframes rotateRing {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   SKILLS & SERVICES & PROJECTS GRID
+   ============================================ */
+
+.skills-grid,
+.services-grid,
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 columns */
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+/* ============================================
+   CARDS (used by skills, services, projects)
+   ============================================ */
+
+.skill-card,
+.service-card,
+.project-card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover,
+.service-card:hover,
+.project-card:hover {
+    border-color: var(--accent-muted);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   SKILLS SECTION SPECIFIC STYLES
+   ============================================ */
+
+#skills {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* Category sub-headings like "Frontend Core" */
+#skills h3 {
+    color: var(--accent);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 40px;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+/* First h3 doesn't need extra top margin */
+#skills h3:first-of-type {
+    margin-top: 0;
+}
+
+/* ===== SKILL CARD STYLES ===== */
+
+.skill-card {
+    text-align: center;
+    padding: 35px 24px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle gradient line at top of card on hover */
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+    border-radius: 0 0 3px 3px;
+}
+
+.skill-card:hover::before {
+    width: 60%;    /* Accent line expands from center on hover */
+}
+
+/* Skill icon */
+.skill-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+}
+
+/* Icon grows slightly on hover */
+.skill-card:hover .skill-icon {
+    transform: scale(1.2);
+}
+
+/* Skill name */
+.skill-card h4 {
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Skill description */
+.skill-card p {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ===== "EXPANDING INTO" CARDS ===== */
+/* Subtle visual difference for backend skills */
+
+/* Target the second skills grid (Expanding Into section) */
+#skills .skills-grid:nth-of-type(2) .skill-card {
+    border: 1px solid var(--accent-muted);
+}
+
+#skills .skills-grid:nth-of-type(2) .skill-card:hover {
+    border-color: var(--accent);
+}
+
+/* Optional: small "Learning" badge */
+#skills .skills-grid:nth-of-type(2) .skill-card::after {
+    content: 'Learning';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: var(--accent-muted);
+    color: var(--accent);
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* ============================================
+   SERVICES SECTION
+   Left-border accent cards, left-aligned
+   Distinct from the centered Skills cards
+   ============================================ */
+
+#services {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: rgba(30, 27, 34, 0.3);  /* Subtle section tint */
+}
+
+/* Service card grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);    /* 2 columns: 2x2 grid */
+    gap: 24px;
+}
+
+/* ===== SERVICE CARD ===== */
+
+.service-card {
+    padding: 35px 30px;
+    text-align: left;               /* Left-aligned, unlike centered skills */
+    border-left: 3px solid transparent;  /* Left border (hidden until hover) */
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Left border appears on hover */
+.service-card:hover {
+    border-left-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    padding-left: 35px;            /* Slightly indents content */
+}
+
+/* Service icon */
+.service-icon {
+    font-size: 2.2rem;
+    display: inline-block;          /* Sits next to text, not above */
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+}
+
+/* Icon nudges right on hover */
+.service-card:hover .service-icon {
+    transform: translateX(5px);
+}
+
+/* Service title */
+.service-card h3 {
+    color: var(--text-primary);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Service description */
+.service-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* ===== ALTERNATING CARD ACCENT ===== */
+/* Subtle top-right corner dot for visual interest */
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-muted);
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.service-card:hover::after {
+    background-color: var(--accent);
+}
+
+/* ============================================
+   PROJECTS SECTION
+   ============================================ */
+
+#projects {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* ===== PROJECT CARD ===== */
+
+.project-card {
+    padding: 0;                    /* No padding on card itself */
+    overflow: hidden;              /* Keeps thumbnail corners rounded */
+    display: flex;
+    flex-direction: column;        /* Stack: thumbnail on top, info below */
+}
+
+/* ===== THUMBNAIL AREA ===== */
+
+.project-thumbnail {
+    background-color: var(--bg-primary);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle diagonal pattern on thumbnail (optional visual texture) */
+.project-thumbnail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(196, 127, 160, 0.03) 10px,
+            rgba(196, 127, 160, 0.03) 20px
+        );
+    z-index: 1;
+}
+
+/* "View Project" overlay that appears on hover */
+.project-thumbnail::after {
+    content: 'View Project';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(196, 127, 160, 0.85);   /* Rose overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    opacity: 0;                               /* Hidden by default */
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+/* Show overlay on hover */
+.project-card:hover .project-thumbnail::after {
+    opacity: 1;
+}
+
+/* ===== PROJECT INFO (below thumbnail) ===== */
+
+.project-info {
+    padding: 24px;
+    flex: 1;                    /* Takes remaining space */
+    display: flex;
+    flex-direction: column;     /* Stack content vertically */
+}
+
+/* Project title */
+.project-info h3 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* ===== TECH TAGS ===== */
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;            /* Tags wrap to next line if many */
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.project-tags span {
+    background-color: var(--accent-muted);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 20px;        /* Pill shape */
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+/* Tag hover: slightly brighter */
+.project-tags span:hover {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+/* ===== PROJECT DESCRIPTION ===== */
+
+.project-info p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;                   /* Pushes buttons to bottom */
+}
+
+/* ===== PROJECT BUTTONS ===== */
+
+.project-links {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;          /* Sticks buttons to bottom */
+}
+
+/* Make buttons fill equal space */
+.project-links .btn-small {
+    flex: 1;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 8px 12px;
+}
+
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+
+#contact {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* ===== CONTACT FORM ===== */
+
+form {
+    max-width: 600px;
+    margin: 0 auto 50px;
+    background-color: var(--bg-card);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+/* Subtle glow on form when user interacts with it */
+form:focus-within {
+    border-color: var(--accent-muted);
+    box-shadow: 0 0 30px rgba(196, 127, 160, 0.05);
+}
+
+/* ===== FORM GROUP (Label + Input pair) ===== */
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+/* Label styling */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* ===== INPUT FIELDS ===== */
+/* Using bottom-border style instead of full box borders */
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 0;                  /* Padding only top/bottom, no left/right */
+    background-color: transparent;     /* Transparent background, card shows through */
+    border: none;                      /* No border on all sides */
+    border-bottom: 2px solid rgba(232, 216, 224, 0.15);  /* Only bottom border */
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;                     /* Remove default browser outline */
+}
+
+/* Placeholder text styling */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.4;
+    font-size: 0.9rem;
+}
+
+/* Input focus state: bottom border turns accent color */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-bottom-color: var(--accent);
+    padding-left: 8px;                /* Subtle indent on focus */
+}
+
+/* Textarea specific: allow vertical resize only */
+.form-group textarea {
+    resize: vertical;                  /* User can only resize vertically */
+    min-height: 100px;                 /* Starting height */
+}
+
+/* ===== SUBMIT BUTTON ===== */
+
+form .btn {
+    width: 100%;                       /* Full width button */
+    margin-top: 8px;
+    padding: 16px 32px;               /* Slightly taller */
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+form .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(196, 127, 160, 0.3);
+}
+
+/* ============================================
+   SOCIAL LINKS
+   ============================================ */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Each social link styled as a subtle button */
+.social-links a {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 20px;
+    border: 1px solid rgba(232, 216, 224, 0.1);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Social link hover effect */
+.social-links a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background-color: var(--accent-muted);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    text-align: center;
+    padding: 40px 24px 30px;
+    border-top: 1px solid rgba(232, 216, 224, 0.06);  /* Very subtle top line */
+    margin-top: 0;
+}
+
+/* Copyright text */
+footer p {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* Back to top link */
+.back-to-top {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 4px 0;
+    position: relative;
+}
+
+/* Underline animation on hover */
+.back-to-top::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.back-to-top:hover::after {
+    width: 100%;                       /* Underline slides in */
+}
+
+.back-to-top:hover {
+    color: var(--text-primary);
+    transform: translateY(-2px);       /* Slight lift */
+}
+
+/* ============================================
+   HERO BACKGROUND SHAPES
+   Floating circles/blobs - pure CSS animation
+   ============================================ */
+
+.hero-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;               /* Behind the text */
+    pointer-events: none;     /* Shapes don't block clicks */
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;       /* Makes them circles */
+    opacity: 0.08;            /* Very subtle */
+    filter: blur(40px);       /* Soft, dreamy edges */
+}
+
+/* Shape 1: Large top-right blob - accent color */
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background-color: var(--accent);
+    top: -100px;
+    right: -100px;
+    animation: floatShape1 12s ease-in-out infinite;
+}
+
+/* Shape 2: Medium bottom-left blob */
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background-color: var(--text-primary);
+    bottom: -50px;
+    left: -50px;
+    animation: floatShape2 10s ease-in-out infinite;
+}
+
+/* Shape 3: Small middle blob */
+.shape-3 {
+    width: 200px;
+    height: 200px;
+    background-color: var(--accent);
+    top: 50%;
+    left: 60%;
+    animation: floatShape3 14s ease-in-out infinite;
+}
+
+/* Shape 4: Medium top-left blob */
+.shape-4 {
+    width: 250px;
+    height: 250px;
+    background-color: var(--text-primary);
+    top: 20%;
+    left: 10%;
+    animation: floatShape4 11s ease-in-out infinite;
+}
+
+/* ===== SHAPE ANIMATIONS ===== */
+/* Each shape moves in a slightly different path and speed */
+/* This creates a natural, organic drifting effect */
+
+@keyframes floatShape1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(-80px, 60px) scale(1.1);
+    }
+    50% {
+        transform: translate(-40px, 100px) scale(0.9);
+    }
+    75% {
+        transform: translate(-100px, 30px) scale(1.05);
+    }
+}
+
+@keyframes floatShape2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(60px, -40px) scale(1.15);
+    }
+    66% {
+        transform: translate(80px, -70px) scale(0.95);
+    }
+}
+
+@keyframes floatShape3 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-50px, -60px) scale(1.2);
+    }
+}
+
+@keyframes floatShape4 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(40px, -50px) scale(0.85);
+    }
+    50% {
+        transform: translate(70px, -20px) scale(1.1);
+    }
+    75% {
+        transform: translate(30px, -60px) scale(0.9);
+    }
+}
+
+/* ============================================
+   SCROLL INDICATOR
+   Animated mouse icon at bottom of hero
+   Tells visitors to scroll down
+   ============================================ */
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+    animation: fadeInUp 1.5s ease-out 1s both;  /* Delayed entrance */
+}
+
+.scroll-indicator span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+/* The mouse shape */
+.scroll-mouse {
+    width: 24px;
+    height: 38px;
+    border: 2px solid var(--text-muted);
+    border-radius: 12px;
+    position: relative;
+}
+
+/* The scrolling dot inside the mouse */
+.scroll-dot {
+    width: 4px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s ease-in-out infinite;
+}
+
+/* Dot moves down and fades, then resets */
+@keyframes scrollWheel {
+    0% {
+        top: 6px;
+        opacity: 1;
+    }
+    100% {
+        top: 20px;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* ============================================
+   HERO RESPONSIVE STYLES
+   Adjust sizes for smaller screens
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hero-name {
+        font-size: 2.2rem;
+    }
+
+    .hero-title {
+        font-size: 1.1rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+    }
+
+    .shape-1 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .shape-2 {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-name {
+        font-size: 1.8rem;
+    }
+}
+
+/* ============================================
+   ABOUT RESPONSIVE STYLES
+   Stack columns on tablets and phones
+   ============================================ */
+
+@media (max-width: 768px) {
+
+    #about {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    /* Stack vertically: text on top, image below */
+    .about-container {
+        grid-template-columns: 1fr;    /* Single column */
+        gap: 40px;
+        text-align: center;
+    }
+
+    /* Image column appears second (below text) */
+    .about-image {
+        order: 2;    /* Pushes image below the text */
+    }
+
+    .about-text {
+        order: 1;    /* Keeps text on top */
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .about-text p:first-child {
+        font-size: 1.05rem;
+    }
+
+    /* Slightly smaller photo on mobile */
+    .image-placeholder {
+        width: 200px;
+        height: 200px;
+    }
+
+    .image-placeholder::before {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+/* ============================================
+   SKILLS RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+
+    #skills {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    /* 2 columns on tablet */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px;
+    }
+
+    .skill-card {
+        padding: 24px 16px 20px;
+    }
+
+    .skill-icon {
+        font-size: 2rem;
+    }
+
+    .skill-card h4 {
+        font-size: 1rem;
+    }
+
+    .skill-card p {
+        font-size: 0.8rem;
+    }
+
+    #skills h3 {
+        font-size: 0.9rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* 1 column on small phones */
+    .skills-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+
+    .skill-card {
+        padding: 20px;
+    }
+}
+
+/* ============================================
+   SERVICES RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+
+    #services {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    /* Stack to single column on tablet */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .service-card {
+        padding: 24px 20px;
+    }
+
+    .service-card:hover {
+        padding-left: 25px;
+    }
+
+    .service-icon {
+        font-size: 1.8rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.05rem;
+    }
+
+    .service-card p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================
+   PROJECTS RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 992px) {
+
+    /* 2 columns on medium screens */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #projects {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .project-thumbnail {
+        height: 160px;
+    }
+
+    .project-info {
+        padding: 18px;
+    }
+
+    .project-info h3 {
+        font-size: 1rem;
+    }
+
+    .project-info p {
+        font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 580px) {
+
+    /* 1 column on small phones */
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+    }
+
+    .project-thumbnail {
+        height: 180px;
+    }
+
+    /* Stack buttons on very small screens */
+    .project-links {
+        flex-direction: column;
+    }
+
+    .project-links .btn-small {
+        width: 100%;
+    }
+}
+
+/* ============================================
+   CONTACT & FOOTER RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+
+    #contact {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    form {
+        padding: 28px 20px;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.95rem;
+    }
+
+    form .btn {
+        padding: 14px 24px;
+        font-size: 0.95rem;
+    }
+
+    /* Social links stack or shrink on mobile */
+    .social-links {
+        gap: 16px;
+    }
+
+    .social-links a {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    footer {
+        padding: 30px 20px 24px;
+    }
+
+    footer p {
+        font-size: 0.78rem;
+    }
+
+    .back-to-top {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Social links stack vertically on very small screens */
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .social-links a {
+        width: 200px;
+        text-align: center;
+    }
+
+    form {
+        padding: 20px 16px;
+    }
+}
+
+/* ============================================
+   PHASE 10: SCROLL REVEAL ANIMATIONS
+   Elements hidden by default, revealed on scroll
+   ============================================ */
+
+/* Initial hidden state for all animated elements */
+section,
+.skill-card,
+.service-card,
+.project-card,
+.about-container,
+form,
+.social-links {
+    opacity: 0;
+    transform: translateY(30px);     /* Start 30px below final position */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* When the 'revealed' class is added by JavaScript */
+.revealed {
+    opacity: 1;
+    transform: translateY(0);        /* Slide up to final position */
+}
+
+/* Stagger effect for cards in the same grid */
+/* Cards reveal one after another for a cascade effect */
+
+.skills-grid .skill-card:nth-child(1),
+.services-grid .service-card:nth-child(1),
+.projects-grid .project-card:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.skills-grid .skill-card:nth-child(2),
+.services-grid .service-card:nth-child(2),
+.projects-grid .project-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.skills-grid .skill-card:nth-child(3),
+.services-grid .service-card:nth-child(3),
+.projects-grid .project-card:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.projects-grid .project-card:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.projects-grid .project-card:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.projects-grid .project-card:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+/* ============================================
+   PHASE 10: ACTIVE NAV LINK STYLE
+   Highlighted when viewing that section
+   ============================================ */
+
+.nav-links a.active {
+    color: var(--accent) !important;
+    position: relative;
+}
+
+/* Small dot indicator under active nav link */
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 50%;
+}
+
+/* ============================================
+   PHASE 10: FADE IN UP ANIMATION (reusable)
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   PHASE 10: FINAL RESPONSIVE TWEAKS
+   ============================================ */
+
+@media (max-width: 768px) {
+
+    /* Reduce stagger delay on mobile for faster reveal */
+    .skills-grid .skill-card,
+    .services-grid .service-card,
+    .projects-grid .project-card {
+        transition-delay: 0.05s !important;
+    }
+}
+
+/* ============================================
+   PHASE 10: REDUCED MOTION SUPPORT
+   Respects user's system preference
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    /* Disable all animations and transitions */
+    section,
+    .skill-card,
+    .service-card,
+    .project-card,
+    .about-container,
+    form,
+    .social-links {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .shape {
+        animation: none;
+    }
+
+    * {
+        transition-duration: 0s !important;
+    }
+}

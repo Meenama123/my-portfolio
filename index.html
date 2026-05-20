@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <header>
+        <nav>
+            <a href="#" class="logo">MyPortfolio</a>
+
+            <!-- Hamburger icon for mobile (Phase 3) -->
+            <button class="hamburger" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation links -->
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+
+                <!-- ===== HERO SECTION ===== -->
+        <section id="home">
+            <!-- Animated background shapes (purely decorative) -->
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+
+            <!-- Hero content -->
+            <div class="hero-content">
+                <p class="hero-greeting">Hello, I'm</p>
+                <h1 class="hero-name">[Your Name]</h1>
+                <p class="hero-title">Frontend Developer</p>
+                <p class="hero-description">
+                    I build clean, responsive, and user-friendly web interfaces.<br>
+                    Exploring backend development to become a <span class="highlight">full-stack engineer</span>.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+
+            <!-- Scroll-down indicator -->
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-mouse">
+                    <div class="scroll-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT SECTION ===== -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-container">
+                <div class="about-text">
+                    <p>
+                        I am a frontend developer with a strong focus on building clean, 
+                        responsive, and user-friendly web interfaces. I work with HTML5, 
+                        CSS3, JavaScript, React, Next.js, and WordPress, using modern best 
+                        practices to deliver high-quality digital experiences.
+                    </p>
+                    <p>
+                        My strength lies in translating designs into functional, accessible, 
+                        and visually appealing websites. I am experienced with CMS-based 
+                        solutions and enjoy creating scalable, maintainable frontend architectures.
+                    </p>
+                    <p>
+                        Currently, I'm a Computer Science student exploring backend technologies 
+                        — working toward becoming a well-rounded full-stack developer.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <!-- Placeholder for your photo -->
+                    <div class="image-placeholder">Your Photo Here</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SKILLS SECTION ===== -->
+        <section id="skills">
+            <h2>My Skills</h2>
+
+            <h3>Frontend Core</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span class="skill-icon">📄</span>
+                    <h4>HTML5</h4>
+                    <p>Semantic markup and accessibility-first structure</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">🎨</span>
+                    <h4>CSS3</h4>
+                    <p>Responsive layouts, animations, and modern styling</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">⚡</span>
+                    <h4>JavaScript</h4>
+                    <p>Interactive interfaces and dynamic functionality</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">⚛️</span>
+                    <h4>React</h4>
+                    <p>Component-based UI development</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">▲</span>
+                    <h4>Next.js</h4>
+                    <p>Server-side rendering and static site generation</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">📝</span>
+                    <h4>WordPress</h4>
+                    <p>CMS development and custom theme building</p>
+                </div>
+            </div>
+
+            <h3>Expanding Into</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span class="skill-icon">🟢</span>
+                    <h4>Node.js</h4>
+                    <p>Server-side JavaScript and API development</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">🗄️</span>
+                    <h4>Databases</h4>
+                    <p>MongoDB and PostgreSQL fundamentals</p>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">🔗</span>
+                    <h4>REST APIs</h4>
+                    <p>Building and consuming APIs</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICES SECTION ===== -->
+        <section id="services">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">💻</span>
+                    <h3>Web Development</h3>
+                    <p>Building responsive, performant websites from scratch</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">📱</span>
+                    <h3>Responsive Design</h3>
+                    <p>Interfaces that work beautifully on all screen sizes</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🔧</span>
+                    <h3>CMS Solutions</h3>
+                    <p>Custom WordPress themes and content management</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🚀</span>
+                    <h3>Performance Optimization</h3>
+                    <p>Fast-loading, efficient, and optimized code</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS SECTION ===== -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <p class="section-subtitle">Here are some of my recent works. I'll replace these with real projects soon.</p>
+
+            <div class="projects-grid">
+
+                <!-- Project Card 1 -->
+                <div class="project-card">
+                    <div class="project-thumbnail">Thumbnail</div>
+                    <div class="project-info">
+                        <h3>Weather Dashboard</h3>
+                        <div class="project-tags">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                        <p>A weather app that fetches real-time data based on city search. Dynamic backgrounds change with weather conditions.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn-small">Live Demo</a>
+                            <a href="#" class="btn-small btn-outline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card">
+                    <div class="project-thumbnail">Thumbnail</div>
+                    <div class="project-info">
+                        <h3>Task Manager</h3>
+                        <div class="project-tags">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                        <p>A CRUD task management app with local storage persistence and drag-and-drop reordering.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn-small">Live Demo</a>
+                            <a href="#" class="btn-small btn-outline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card">
+                    <div class="project-thumbnail">Thumbnail</div>
+                    <div class="project-info">
+                        <h3>E-Commerce Storefront</h3>
+                        <div class="project-tags">
+                            <span>React</span><span>CSS</span><span>API</span>
+                        </div>
+                        <p>Product listings with filtering, sorting, and a functional shopping cart. Clean, modern UI.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn-small">Live Demo</a>
+                            <a href="#" class="btn-small btn-outline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="project-card">
+                    <div class="project-thumbnail">Thumbnail</div>
+                    <div class="project-info">
+                        <h3>Blog CMS Frontend</h3>
+                        <div class="project-tags">
+                            <span>Next.js</span><span>Markdown</span><span>Tailwind</span>
+                        </div>
+                        <p>A blog platform with markdown-based posts, dark theme, and category filtering.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn-small">Live Demo</a>
+                            <a href="#" class="btn-small btn-outline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 -->
+                <div class="project-card">
+                    <div class="project-thumbnail">Thumbnail</div>
+                    <div class="project-info">
+                        <h3>Portfolio Template</h3>
+                        <div class="project-tags">
+                            <span>HTML</span><span>CSS</span><span>JS</span>
+                        </div>
+                        <p>A reusable, customizable portfolio template for developers. Clean design and easy to modify.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn-small">Live Demo</a>
+                            <a href="#" class="btn-small btn-outline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 -->
+                <div class="project-card">
+                    <div class="project-thumbnail">Thumbnail</div>
+                    <div class="project-info">
+                        <h3>Chat App Interface</h3>
+                        <div class="project-tags">
+                            <span>React</span><span>CSS</span><span>Firebase</span>
+                        </div>
+                        <p>A real-time chat interface with message threading, user status indicators, and responsive design.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn-small">Live Demo</a>
+                            <a href="#" class="btn-small btn-outline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">Have a project in mind? Let's work together.</p>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+
+            <!-- Social links -->
+            <div class="social-links">
+                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>&copy; 2026 [Your Name]. Built with care.</p>
+        <a href="#home" class="back-to-top">↑ Back to Top</a>
+    </footer>
+
+</body>
+</html>
