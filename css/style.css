@@ -1608,6 +1608,7 @@ form,
     position: relative;
 }
 
+
 /* Small dot indicator under active nav link */
 .nav-links a.active::after {
     content: '';
